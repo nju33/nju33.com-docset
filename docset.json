@@ -1,0 +1,11 @@
+{
+  "name": "Sample",
+  "version": "1.0.0",
+  "archive": "nju33.tgz",
+  "author": {
+    "name": "nju33",
+    "link": "nju33.ki@gmail.com"
+  },
+  "aliases": [],
+  "specific_versions": []
+}

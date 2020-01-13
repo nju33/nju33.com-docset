@@ -1,1 +1,1 @@
-# nju33.com-docset-gen
+# nju33.com docset

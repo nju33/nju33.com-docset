@@ -18,6 +18,13 @@ const client = contentful.createClient({
     db.run('CREATE UNIQUE INDEX anchor ON searchIndex (name, type, path)');
 
     entries.items.forEach(item => {
+      console.log(
+        JSON.stringify({
+          $name: item.fields.slug,
+          $type: 'Entry',
+          $path: `https://njuu33.com/${item.fields.slug}`
+        })
+      );
       db.run(
         'INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES ($name, $type, $path)',
         {
@@ -28,6 +35,13 @@ const client = contentful.createClient({
       );
 
       item.fields.posts.forEach(post => {
+        console.log(
+          JSON.stringify({
+            $name: `${item.fields.slug} ${post.fields.title}`,
+            $type: 'Entry',
+            $path: `https://nju33.com/${item.fields.slug}/${post.fields.title}`
+          })
+        );
         db.run(
           'INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES ($name, $type, $path)',
           {

@@ -1,0 +1,43 @@
+version: 2.1
+
+commands:
+  yarn-install:
+    steps:
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+  db-generate:
+    description: to create docSet.dsidx
+    steps:
+      - run: if test -e nju33.docset/Contents/Resources/docSet.dsidx; then rm nju33.docset/Contents/Resources/docSet.dsidx; fi
+      - run: if test -e nju33.tgz; then rm nju33.tgz; fi
+      - run: node gen.js
+      - run: tar --exclude='.DS_Store' -cvzf nju33.tgz nju33.docset
+  git-prepare:
+    steps:
+      - run: |
+          git remote set-url origin https://nju33-com-docset:${GITHUB_PERSONAL_ACCESS_TOKEN}@github.com/nju33/nju33.com-docset.git
+          git config --local user.name nju33-com-docset
+          git config --local user.email nju33.github-nju33-com-docset@gmail.com
+  git-push:
+    steps:
+      - run: git add --all
+      - run: "git commit -m 'chore: update docSet.dsidx [ci skip]'"
+      - run: git push origin master
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - yarn-install
+      - db-generate
+      - git-prepare
+      - git-push
