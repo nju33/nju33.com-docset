@@ -22,7 +22,7 @@ const client = contentful.createClient({
         JSON.stringify({
           $name: item.fields.slug,
           $type: 'Entry',
-          $path: `https://njuu33.com/${item.fields.slug}`
+          $path: `https://njuu33.com/dash/docset/${item.fields.slug}`
         })
       );
       db.run(
@@ -30,7 +30,7 @@ const client = contentful.createClient({
         {
           $name: item.fields.slug,
           $type: 'Entry',
-          $path: `https://njuu33.com/${item.fields.slug}`
+          $path: `https://njuu33.com/dash/docset/${item.fields.slug}`
         }
       );
 
@@ -39,7 +39,7 @@ const client = contentful.createClient({
           JSON.stringify({
             $name: `${item.fields.slug} ${post.fields.title}`,
             $type: 'Entry',
-            $path: `https://nju33.com/${item.fields.slug}/${post.fields.title}`
+            $path: `https://nju33.com/dash/docset/${item.fields.slug}/${post.fields.title}`
           })
         );
         db.run(
@@ -47,7 +47,7 @@ const client = contentful.createClient({
           {
             $name: `${item.fields.slug} ${post.fields.title}`,
             $type: 'Entry',
-            $path: `https://nju33.com/${item.fields.slug}/${post.fields.title}`
+            $path: `https://nju33.com/dash/docset/${item.fields.slug}/${post.fields.title}`
           }
         );
       });
