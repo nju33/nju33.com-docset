@@ -30,6 +30,13 @@ commands:
       - run: git add --all
       - run: "git commit -m 'chore: update docSet.dsidx [ci skip]'"
       - run: git pull
+      - run:
+          name: Resolve conflict
+          command: |
+            git checkout --ours nju33.tgz
+            git add nju33.tgz
+            git commit --no-edit
+          when: on_fail
       - run: git push origin master
 
 jobs:
