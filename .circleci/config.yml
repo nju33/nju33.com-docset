@@ -36,6 +36,7 @@ commands:
             git checkout --ours nju33.tgz
             git add nju33.tgz
             git commit --no-edit
+            git push origin master
           when: on_fail
       - run: git push origin master
 
