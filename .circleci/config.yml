@@ -19,6 +19,11 @@ commands:
       - run: if test -e nju33.tgz; then rm nju33.tgz; fi
       - run: node gen.js
       - run: tar --exclude='.DS_Store' -cvzf nju33.tgz nju33.docset
+  bump-version:
+    description: bump patch version
+    steps:
+      - run: yarn version --patch --no-git-tag-version
+      - run: npx npe version $(npx npe version) --package $(pwd)/docset.json
   git-prepare:
     steps:
       - run: |
@@ -48,5 +53,6 @@ jobs:
       - checkout
       - yarn-install
       - db-generate
+      - bump-version
       - git-prepare
       - git-push
