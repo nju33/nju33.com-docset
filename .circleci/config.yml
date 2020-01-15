@@ -35,7 +35,7 @@ jobs:
       - run:
           command: git add --all
       - run:
-          command: "git commit -m 'chore: update docSet.dsidx [ci skip]'"
+          command: 'git commit -m "chore: bump to $(npx npe version) [ci skip]"'
       - run:
           command: git pull
       - run:
@@ -88,7 +88,7 @@ workflows:
 #   git-push:
 #     steps:
 #       - run: git add --all
-#       - run: "git commit -m 'chore: update docSet.dsidx [ci skip]'"
+#       - run: "git commit -m \"chore: bump to $(npx npe version) [ci skip]\""
 #       - run: git pull
 #       - run:
 #           name: Resolve conflict
