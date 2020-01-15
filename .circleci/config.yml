@@ -29,6 +29,7 @@ commands:
     steps:
       - run: git add --all
       - run: "git commit -m 'chore: update docSet.dsidx [ci skip]'"
+      - run: git pull
       - run: git push origin master
 
 jobs:
