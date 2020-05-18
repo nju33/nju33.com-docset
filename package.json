@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "nju33.com-docset-gen",
-  "version": "1.0.535",
+  "version": "1.0.536",
   "main": "index.js",
   "repository": "git@github.com:nju33/nju33.com-docset-gen.git",
   "author": "nju33 <nju33.ki@gmail.com>",
